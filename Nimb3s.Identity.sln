@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Identity.Api", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{093357F6-D2A9-4A92-9AD1-4747530A2C40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nimb3s.Identity.Samples.IdentityServer", "samples\Nimb3s.Identity.Samples.IdentityServer\Nimb3s.Identity.Samples.IdentityServer.csproj", "{7275342B-A4BE-4F5D-81F5-11BD472E67C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Identity.Samples.IdentityServer", "samples\Nimb3s.Identity.Samples.IdentityServer\Nimb3s.Identity.Samples.IdentityServer.csproj", "{7275342B-A4BE-4F5D-81F5-11BD472E67C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nimb3s.Identity.Samples.Client", "samples\Nimb3s.Identity.Samples.Client\Nimb3s.Identity.Samples.Client.csproj", "{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +25,17 @@ Global
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9} = {093357F6-D2A9-4A92-9AD1-4747530A2C40}
+		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4} = {093357F6-D2A9-4A92-9AD1-4747530A2C40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46268209-EA22-407C-AE07-35CA7C25DF71}
