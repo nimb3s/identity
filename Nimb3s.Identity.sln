@@ -9,26 +9,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{0933
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Identity.Samples.IdentityServer", "samples\Nimb3s.Identity.Samples.IdentityServer\Nimb3s.Identity.Samples.IdentityServer.csproj", "{7275342B-A4BE-4F5D-81F5-11BD472E67C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nimb3s.Identity.Samples.Client", "samples\Nimb3s.Identity.Samples.Client\Nimb3s.Identity.Samples.Client.csproj", "{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Identity.Samples.Client", "samples\Nimb3s.Identity.Samples.Client\Nimb3s.Identity.Samples.Client.csproj", "{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8428423-DAD4-4DE5-87B9-EFCC136F6C51}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		entrypoint.sh = entrypoint.sh
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.IdentityTwo.Database", "src\Nimb3s.IdentityTwo.Database\Nimb3s.IdentityTwo.Database.csproj", "{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		ReleaseDatabase|Any CPU = ReleaseDatabase|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{70D5B4E3-924F-4847-B29B-4D9585871A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70D5B4E3-924F-4847-B29B-4D9585871A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70D5B4E3-924F-4847-B29B-4D9585871A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70D5B4E3-924F-4847-B29B-4D9585871A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D5B4E3-924F-4847-B29B-4D9585871A3B}.ReleaseDatabase|Any CPU.ActiveCfg = ReleaseDatabase|Any CPU
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7275342B-A4BE-4F5D-81F5-11BD472E67C9}.ReleaseDatabase|Any CPU.ActiveCfg = ReleaseDatabase|Any CPU
 		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E84D81-D3A2-4A5D-9336-36773C5AB3D4}.ReleaseDatabase|Any CPU.ActiveCfg = ReleaseDatabase|Any CPU
+		{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}.ReleaseDatabase|Any CPU.ActiveCfg = Release|Any CPU
+		{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}.ReleaseDatabase|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

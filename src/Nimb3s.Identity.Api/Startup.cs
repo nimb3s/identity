@@ -34,7 +34,7 @@ namespace Nimb3s.Identity.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nimb3s.Identity.Api", Version = "v1" });
             });
 
-            ConfigureIdentityServices(services);
+            //ConfigureIdentityServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +58,7 @@ namespace Nimb3s.Identity.Api
                 endpoints.MapControllers();
             });
 
-            ConfigureIdentity(app);
+            //ConfigureIdentity(app);
         }
     }
 }

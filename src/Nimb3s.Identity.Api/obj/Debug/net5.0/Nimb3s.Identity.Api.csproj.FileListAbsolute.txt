@@ -49,3 +49,4 @@ C:\git\identity\src\Nimb3s.Identity.Api\bin\Debug\net5.0\Serilog.Sinks.Console.d
 C:\git\identity\src\Nimb3s.Identity.Api\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
 C:\git\identity\src\Nimb3s.Identity.Api\bin\Debug\net5.0\Serilog.Sinks.File.dll
 C:\git\identity\src\Nimb3s.Identity.Api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+c:\git\identity\src\Nimb3s.Identity.Api\bin\Debug\net5.0\entrypoint.sh
