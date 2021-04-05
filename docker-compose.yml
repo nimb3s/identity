@@ -27,9 +27,13 @@ services:
         build:
           context: .
           dockerfile: src/Nimb3s.IdentityTwo.Database/Dockerfile
+
         environment:
             SA_PASSWORD: "1234qwerASDF"
             ACCEPT_EULA: "Y"
             MSSQL_PID: Express
         ports:
             - "1433:1433"
+
+#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" --force-rm -t nimb3sidentitytwodatabase  --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
+#docker-compose build --no-cache --progress plain --pull
