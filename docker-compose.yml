@@ -22,5 +22,5 @@ services:
         ports:
             - "1433:1433"
 
-#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" --force-rm -t nimb3sidentitytwodatabase  --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
+#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" -t nimb3s/identity --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
 #docker-compose build --no-cache --progress plain --pull
