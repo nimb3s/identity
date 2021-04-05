@@ -5,8 +5,6 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
@@ -15,16 +13,7 @@ RUN dotnet restore "src/Nimb3s.IdentityTwo.Database/Nimb3s.IdentityTwo.Database.
 COPY . .
 WORKDIR "/src/src/Nimb3s.IdentityTwo.Database"
 RUN dotnet build "Nimb3s.IdentityTwo.Database.csproj" -c Release -o /app/build
-
-#FROM build AS publish
-#RUN dotnet publish "Nimb3s.IdentityTwo.Database.csproj" -c Release -o /app/publish
-
-#FROM base AS final
-#WORKDIR /app
-#COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "Nimb3s.IdentityTwo.Database.dll"]
 RUN ls -R
-
 
 FROM mcr.microsoft.com/mssql/server:2019-latest 
 # Elevate to root to install required packages
