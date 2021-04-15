@@ -52,8 +52,8 @@ jobs:
 
     # - name: Docker - API Pushing latest image to dockerhub
     #   run: docker push nimb3s/identity:latest
-  publish:
+  # publish:
     
-    needs: build
+  #   needs: build
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
