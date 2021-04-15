@@ -3953,23 +3953,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ktabarez\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\kain.tabarez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\identity\\src\\Nimb3s.Identity.Api\\Nimb3s.Identity.Api.csproj",
+      "projectUniqueName": "C:\\SourceCode\\identity\\src\\Nimb3s.Identity.Api\\Nimb3s.Identity.Api.csproj",
       "projectName": "Nimb3s.Identity.Api",
-      "projectPath": "C:\\git\\identity\\src\\Nimb3s.Identity.Api\\Nimb3s.Identity.Api.csproj",
-      "packagesPath": "C:\\Users\\ktabarez\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\identity\\src\\Nimb3s.Identity.Api\\obj\\",
+      "projectPath": "C:\\SourceCode\\identity\\src\\Nimb3s.Identity.Api\\Nimb3s.Identity.Api.csproj",
+      "packagesPath": "C:\\Users\\kain.tabarez\\.nuget\\packages\\",
+      "outputPath": "C:\\SourceCode\\identity\\src\\Nimb3s.Identity.Api\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ktabarez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kain.tabarez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3977,6 +3973,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://ls-sd-build01:8890/nuget/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

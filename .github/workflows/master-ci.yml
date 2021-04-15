@@ -1,0 +1,36 @@
+name: Master CI Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: About Me
+      run: echo "Build kicked off by $FIRST_NAME $middle_name $Last_Name"
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      env:
+        ASPNETCORE_ENVIRONMENT : Development
+      run: dotnet build --no-restore
+#    - name: Test
+#      run: dotnet test --no-build --verbosity normal
+#    - name: Build and Push Docker Image
+#      uses : mr-smithers-excellent/docker-build-push@v4
+#      with:
+#        image: nimb3s/identity
+#        registry: docker.io
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.DOCKER_PASSWORD }}
