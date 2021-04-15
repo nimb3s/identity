@@ -12,7 +12,7 @@ COPY ["src/Nimb3s.IdentityTwo.Database/Nimb3s.IdentityTwo.Database.csproj", "src
 RUN dotnet restore "src/Nimb3s.IdentityTwo.Database/Nimb3s.IdentityTwo.Database.csproj"
 COPY . .
 WORKDIR "/src/src/Nimb3s.IdentityTwo.Database"
-RUN dotnet build "Nimb3s.IdentityTwo.Database.csproj" -c Release -o /app/build
+RUN dotnet build "Nimb3s.IdentityTwo.Database.csproj" -c ReleaseDatabase -o /app/build
 RUN ls -R
 
 FROM mcr.microsoft.com/mssql/server:2019-latest 

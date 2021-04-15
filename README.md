@@ -20,9 +20,7 @@ After installing, install these extensions:
 - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 - [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-container)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-
-## Github Actions
-To run actions locally install nektos/act. Reference the [nektos/act](https://github.com/nektos/act) on how to install.
+- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 
 ## Docker and Kubernetes
 
@@ -33,3 +31,16 @@ Enable Kuberenetes and Deploy Docker Stacks to Kubernetes by default. Take a loo
 Bonus points. Test docker install by running SQL Express in a docker container. [mcr.microsoft.com/mssql/server:2019-latest](https://hub.docker.com/_/microsoft-mssql-server):
   - run in commandline `docker pull mcr.microsoft.com/mssql/server:2019-latest`
   - start a mssql-server instance and run the SQL Express edition: `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=1234qwerASDF" -e 'MSSQL_PID=Express' -p 1434:1434 --name Nimb3s.Identity.Database mcr.microsoft.com/mssql/server:2019-latest`
+
+## Github Actions
+To run actions locally install nektos/act. Reference the [nektos/act](https://github.com/nektos/act) on how to install.
+
+Before you isntall act, make sure docker is installed.
+
+## Git repo cleanup before .gitignore file is committed
+Just in case, run these git commands to cleanup a git repo when files are added before a .gitignore:
+```
+git rm -rf --cached .
+git add .
+git commit -am "cleanup"
+```
