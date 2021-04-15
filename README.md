@@ -33,7 +33,7 @@ Bonus points. Test docker install by running SQL Express in a docker container. 
   - start a mssql-server instance and run the SQL Express edition: `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=1234qwerASDF" -e 'MSSQL_PID=Express' -p 1434:1434 --name Nimb3s.Identity.Database mcr.microsoft.com/mssql/server:2019-latest`
 
 ## Github Actions
-To run actions locally install nektos/act. Reference the [nektos/act](https://github.com/nektos/act) on how to install.
+To run actions locally install nektos/act. Reference the [nektos/act](https://github.com/nektos/act) repo on how to install.
 
 Before you isntall act, make sure docker is installed.
 
