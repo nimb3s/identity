@@ -18,18 +18,10 @@ RUN ls -R
 FROM mcr.microsoft.com/mssql/server:2019-latest 
 # Elevate to root to install required packages
 USER root
-RUN apt-get clean \
-    && apt-get update \
-    && apt-get install unzip libunwind8 libicu-dev -y \
-    && apt-get update
+RUN apt-get update \
+    && apt-get install unzip libunwind8 libicu60 libssl1.0 -y
 
-#https://stackoverflow.com/questions/57265913/error-tcp-provider-error-code-0x2746-during-the-sql-setup-in-linux-through-te/
-RUN wget https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - \
-    && wget https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list \
-    && apt-get update \
-    && apt-get install mssql-tools unixodbc-dev
-
-
+# Install SQLPackage for Linux and make it executable
 RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2113331 \
     && unzip -qq sqlpackage.zip -d /opt/sqlpackage \
     && chmod +x /opt/sqlpackage/sqlpackage \
