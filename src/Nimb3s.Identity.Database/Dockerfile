@@ -23,16 +23,9 @@ RUN apt-get clean \
     && apt-get install unzip libunwind8 libicu-dev -y \
     && apt-get update
 
+#https://stackoverflow.com/questions/57265913/error-tcp-provider-error-code-0x2746-during-the-sql-setup-in-linux-through-te/
 RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /opt/mssql/lib/libssl.so
-RUN ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /opt/mssql/lib/libcrypto.so
-
-
-# Install SQLPackage for Linux and make it executable
-RUN wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/openssl_1.0.2g-1ubuntu4_amd64.deb \
-    && dpkg -i openssl_1.0.2g-1ubuntu4_amd64.deb \
-    && apt-get install -y libcurl3 \
-    && apt-get update
-    
+RUN ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /opt/mssql/lib/libcrypto.so    
 
 RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2113331 \
     && unzip -qq sqlpackage.zip -d /opt/sqlpackage \
