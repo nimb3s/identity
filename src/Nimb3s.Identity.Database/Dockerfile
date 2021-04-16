@@ -20,7 +20,6 @@ FROM mcr.microsoft.com/mssql/server:2019-latest
 USER root
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
-    && add-apt-repository universe \
     && apt-get update \ 
     && apt-get install unzip libunwind8 libicu60 libssl1.0 -y \
     && apt-get update \
