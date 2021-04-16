@@ -18,11 +18,11 @@ RUN ls -R
 FROM mcr.microsoft.com/mssql/server:2019-latest 
 # Elevate to root to install required packages
 USER root
-RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+RUN wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \ 
     && apt-get install -y apt-transport-https \
-    && apt-get install unzip libunwind8 libssl1.0.0 -y \
+    && apt-get install unzip libunwind8 libicu60 libssl1.0 -y \
     && apt-get update 
 
 # Install SQLPackage for Linux and make it executable
