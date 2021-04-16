@@ -22,7 +22,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-p
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \ 
     && apt-get install -y apt-transport-https \
-    && apt-get install unzip libunwind8 libicu-dev libssl1.0 -y \
+    && apt-get install unzip libunwind8 libicu-dev libssl-dev -y \
     && apt-get update 
 
 # Install SQLPackage for Linux and make it executable
