@@ -23,7 +23,8 @@ RUN wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-p
     && apt-get update \ 
     && apt-get install -y apt-transport-https \
     && apt-get install unzip libunwind8 libicu-dev libssl-dev -y \
-    && apt-get update 
+    && apt-get update \
+    && apt-get upgrade
 
 # Install SQLPackage for Linux and make it executable
 RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2113331 \
