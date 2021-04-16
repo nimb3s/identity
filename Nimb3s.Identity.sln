@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.IdentityTwo.Database", "src\Nimb3s.IdentityTwo.Database\Nimb3s.IdentityTwo.Database.csproj", "{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimb3s.Identity.Database", "src\Nimb3s.Identity.Database\Nimb3s.Identity.Database.csproj", "{0135F2C5-419A-44AB-9FAB-A5CEB6B0F367}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B03A2174-30E3-4B37-ACBB-23E65D15450A}"
 EndProject

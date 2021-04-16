@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 version: "3.9"
 services:
     api:
@@ -11,11 +10,10 @@ services:
         depends_on:
             - db
     db:
-        container_name: Nimb3s.IdentityTwo.Database
-        image: nimb3s/identity.database
-        #build:
-         # context: .
-          #dockerfile: src/Nimb3s.IdentityTwo.Database/Dockerfile
+        container_name: Nimb3s.Identity.Database
+        build:
+          context: .
+          dockerfile: src/Nimb3s.Identity.Database/Dockerfile
 
         environment:
             SA_PASSWORD: "1234qwerASDF"
@@ -24,33 +22,5 @@ services:
         ports:
             - "1433:1433"
 
-#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" -t nimb3s/identity.database --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
-#docker-compose up --build --no-cache --progress plain --pull
-=======
-version: "3.9"
-services:
-    api:
-        container_name: Nimb3s.Identity.Api
-        build:
-          context: .
-          dockerfile: src/Nimb3s.Identity.Api/Dockerfile
-        ports:
-            - "8000:80"
-        depends_on:
-            - db
-    db:
-        container_name: Nimb3s.IdentityTwo.Database
-        build:
-          context: .
-          dockerfile: src/Nimb3s.IdentityTwo.Database/Dockerfile
-
-        environment:
-            SA_PASSWORD: "1234qwerASDF"
-            ACCEPT_EULA: "Y"
-            MSSQL_PID: Express
-        ports:
-            - "1433:1433"
-
-#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" -t nimb3s/identity --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
+#docker build -f "C:\git\identity\src\Nimb3s.Identity.Database\Dockerfile" -t nimb3s/identity --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Database" "C:\git\identity" --progress plain --no-cache
 #docker-compose build --no-cache --progress plain --pull
->>>>>>> a0bed59597be871d45ce26d99fceca05e1a95661
