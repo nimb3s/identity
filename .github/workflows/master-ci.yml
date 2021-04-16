@@ -44,7 +44,7 @@ jobs:
     - name: Docker - API Pushing tagged image to dockerhub
       run: docker push nimb3s/identity.api:${{env.RELEASE_VERSION}}
     - name: Docker - API Building latest image
-      run: docker build -f "src/Nimb3s.Identity.Api/Dockerfile" --tag nimb3s/identity.api:latest
+      run: docker build -f "src/Nimb3s.Identity.Api/Dockerfile" --tag nimb3s/identity.api:latest .
     - name: Docker - API Pushing latest image to dockerhub
       run: docker push nimb3s/identity.api:latest
 
@@ -53,7 +53,7 @@ jobs:
     - name: Docker - Database Pushing tagged image to dockerhub
       run: docker push nimb3s/identity.database:${{env.RELEASE_VERSION}}
     - name: Docker - Database Building latest image
-      run: docker build -f "src/Nimb3s.Identity.Database/Dockerfile" --tag nimb3s/identity.database:latest
+      run: docker build -f "src/Nimb3s.Identity.Database/Dockerfile" --tag nimb3s/identity.database:latest .
     - name: Docker - API Pushing latest image to dockerhub
       run: docker push nimb3s/identity.database:latest
 
