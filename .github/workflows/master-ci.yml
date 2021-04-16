@@ -18,8 +18,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: About Me
-      run: echo "Build kicked off by $FIRST_NAME $middle_name $Last_Name"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -34,24 +32,24 @@ jobs:
 #    - name: Test
 #      run: dotnet test --no-build --verbosity normal
 
-    # - name: Login to DockerHub Registry
-    #   run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-    # - name: Get the version
-    #   id: vars
-    #   run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+    - name: Get the version
+      id: vars
+      run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
 
-    # - name: Docker - API Building tagged image
-    #   run: docker build -f "C:\git\identity\src\Nimb3s.Identity.Api\Dockerfile" --tag nimb3s/identity:${{steps.vars.outputs.tag}} --force-rm --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Api" "C:\git\identity" --progress plain --no-cache
+    - name: Docker - API Building tagged image
+      run: docker build -f "C:\git\identity\src\Nimb3s.Identity.Api\Dockerfile" --tag nimb3s/identity.api:${{steps.vars.outputs.tag}} --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Api" "C:\git\identity" --progress plain --no-cache
 
-    # - name: Docker - API Pushing tagged image to dockerhub
-    #   run: docker push nimb3s/identity:${{steps.vars.outputs.tag}}
+    - name: Docker - API Pushing tagged image to dockerhub
+      run: docker push nimb3s/identity.api:${{steps.vars.outputs.tag}}
 
-    # - name: Docker - API Building latest image
-    #   run: docker build . --file Dockerfile --tag nimb3s/identity:latest
+    - name: Docker - API Building latest image
+      run: docker build . --file Dockerfile --tag nimb3s/identity.api:latest
 
-    # - name: Docker - API Pushing latest image to dockerhub
-    #   run: docker push nimb3s/identity:latest
+    - name: Docker - API Pushing latest image to dockerhub
+      run: docker push nimb3s/identity.api:latest
   # publish:
     
   #   needs: build
