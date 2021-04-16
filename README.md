@@ -1,3 +1,7 @@
+[![Actions Status](https://github.com/nimb3s/identity/workflows/master/badge.svg)](https://github.com/nimb3s/identity/actions)
+
+
+
 # Getting Started
 ## Windows Users - Install Choco
 Reference [install instructions from choco.org](https://chocolatey.org/install).
