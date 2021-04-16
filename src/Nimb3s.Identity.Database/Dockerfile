@@ -21,9 +21,9 @@ USER root
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \ 
-    && apt-get install unzip libunwind8 libicu60 libssl1.0 -y \
-    && apt-get update \
-    && apt-get install apt-transport-https
+    && apt-get install -y apt-transport-https \
+    && apt-get install unzip libunwind8 libssl1.0.0 -y \
+    && apt-get update 
 
 # Install SQLPackage for Linux and make it executable
 RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2113331 \
