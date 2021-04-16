@@ -78,7 +78,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-18.04]
     steps:
       - uses: actions/checkout@v2
 
