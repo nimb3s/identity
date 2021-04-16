@@ -24,8 +24,8 @@ RUN apt-get clean \
     && apt-get update
 
 #https://stackoverflow.com/questions/57265913/error-tcp-provider-error-code-0x2746-during-the-sql-setup-in-linux-through-te/
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - \
-    && curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list \
+RUN wget https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - \
+    && wget https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list \
     && apt-get update \
     && apt-get install mssql-tools unixodbc-dev
 
