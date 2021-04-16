@@ -18,8 +18,9 @@ RUN ls -R
 FROM mcr.microsoft.com/mssql/server:2019-latest 
 # Elevate to root to install required packages
 USER root
-RUN apt-get update \
-    && apt-get install unzip libunwind8 libicu53 libssl1.0 -y \
+RUN apt-get clean \
+    && apt-get update \
+    && apt-get install unzip libunwind8 libicu-dev libssl1.0 -y \
     && apt-get update
 
 
