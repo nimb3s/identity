@@ -5,7 +5,7 @@
     <UserSecretsId>8c09ee6b-dc32-46b7-bda9-5130fdcd9538</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <Configurations>Debug;Release;ReleaseDatabase</Configurations>
+    <Configurations>Debug;Release;ReleaseDatabase;ReleaseNoDb</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
