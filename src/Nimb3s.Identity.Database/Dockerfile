@@ -20,7 +20,7 @@ FROM mcr.microsoft.com/mssql/server:2019-latest
 USER root
 RUN apt-get clean \
     && apt-get update \
-    && apt-get install unzip libunwind8 libicu-dev libssl1.0 -y \
+    && apt-get install unzip libunwind8 libicu-dev libssl-dev -y \
     && apt-get update
 
 
