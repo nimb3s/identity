@@ -18,7 +18,7 @@ After installing, install these extensions:
 - [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
 - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-- [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-container)
+- [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 - [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 
