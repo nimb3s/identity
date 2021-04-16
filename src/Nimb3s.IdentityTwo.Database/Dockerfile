@@ -18,7 +18,7 @@ RUN ls -R
 FROM mcr.microsoft.com/mssql/server:2019-latest 
 # Elevate to root to install required packages
 USER root
-RUN apt-get update \
+RUN apt-get -yq update \
     && apt-get install unzip libunwind8 libicu60 libssl1.0 -y
 
 # Install SQLPackage for Linux and make it executable
@@ -52,3 +52,5 @@ RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started"
     && rm -r /tmp/db \
     && pkill sqlservr \
     && rm -r /opt/sqlpackage
+
+#docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=1234qwerASDF' -e 'MSSQL_PID=Express' -p 1433:1433 -d nimb3s/identity.database

@@ -11,9 +11,10 @@ services:
             - db
     db:
         container_name: Nimb3s.IdentityTwo.Database
-        build:
-          context: .
-          dockerfile: src/Nimb3s.IdentityTwo.Database/Dockerfile
+        image: nimb3s/identity.database
+        #build:
+         # context: .
+          #dockerfile: src/Nimb3s.IdentityTwo.Database/Dockerfile
 
         environment:
             SA_PASSWORD: "1234qwerASDF"
@@ -22,5 +23,5 @@ services:
         ports:
             - "1433:1433"
 
-#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" -t nimb3s/identity --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
-#docker-compose build --no-cache --progress plain --pull
+#docker build -f "C:\git\identity\src\Nimb3s.IdentityTwo.Database\Dockerfile" -t nimb3s/identity.database --force-rm --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=Nimb3s.IdentityTwo.Database" "C:\git\identity" --progress plain --no-cache
+#docker-compose up --build --no-cache --progress plain --pull
