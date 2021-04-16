@@ -20,11 +20,17 @@ FROM mcr.microsoft.com/mssql/server:2019-latest
 USER root
 RUN apt-get clean \
     && apt-get update \
-    && apt-get install unzip libunwind8 libicu-dev libssl-dev -y \
+    && apt-get install unzip libunwind8 libicu-dev -y \
     && apt-get update
 
 
 # Install SQLPackage for Linux and make it executable
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/openssl_1.0.2g-1ubuntu4_amd64.deb \
+    && dpkg -i openssl_1.0.2g-1ubuntu4_amd64.deb \
+    && apt-get install -y libcurl3 \
+    && apt-get update
+    
+
 RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2113331 \
     && unzip -qq sqlpackage.zip -d /opt/sqlpackage \
     && chmod +x /opt/sqlpackage/sqlpackage \
