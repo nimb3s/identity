@@ -1,5 +1,5 @@
 [![Actions Status](https://github.com/nimb3s/identity/workflows/master/badge.svg)](https://github.com/nimb3s/identity/actions)
-
+[![Actions Status](https://github.com/nimb3s/identity/workflows/develop/badge.svg)](https://github.com/nimb3s/identity/actions)
 
 
 # Getting Started
