@@ -1,4 +1,4 @@
-name: master
+name: develop
 
 on:
   push:
