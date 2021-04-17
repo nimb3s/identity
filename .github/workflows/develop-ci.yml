@@ -44,11 +44,18 @@ jobs:
     # - name: Get branch name
     #   run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
 
-    # - name: Upload Build Artifact
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: BuildArtifacts-${{env.RELEASE_VERSION}}
-    #     path: .
+    - name: Upload API Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: API.${{env.NBGV_SemVer2}}
+        path: src/Nimb3s.Identity.Api/bin/Release/net5.0
+
+    - name: Upload DB Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: DB.${{env.NBGV_SemVer2}}
+        path: src/Nimb3s.Identity.Database/bin/Release/netstandard2.0
+
 
   api_docker_image:
     
