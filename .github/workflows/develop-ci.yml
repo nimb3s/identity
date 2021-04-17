@@ -79,7 +79,7 @@ jobs:
 
       - name: Get docker tag name
         run: |
-          echo "NBGV_BuildingRef $NBGV_BuildingRef#refs/*/:10
+          echo "NBGV_BuildingRef $NBGV_BuildingRef#refs/*/:10"
           echo "NBGV_BuildingRef $NBGV_BuildingRef:11"
 
       # - name: Login to DockerHub Registry
