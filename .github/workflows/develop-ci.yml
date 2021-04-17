@@ -47,13 +47,13 @@ jobs:
     - name: Upload API Build Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: API.${{env.NBGV_SemVer2}}
+        name: api.${{env.NBGV_SemVer2}}
         path: src/Nimb3s.Identity.Api/bin/Release/net5.0
 
     - name: Upload DB Build Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: DB.${{env.NBGV_SemVer2}}
+        name: db.${{env.NBGV_SemVer2}}
         path: src/Nimb3s.Identity.Database/bin/Release/netstandard2.0
 
 
