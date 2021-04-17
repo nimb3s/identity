@@ -14,7 +14,6 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
-        #os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -63,7 +62,9 @@ jobs:
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
 
       - name: print version 
-        run: echo $env.RELEASE_VERSION:12
+        run: |
+         echo {$env.RELEASE_VERSION:12}
+         echo {{$env.RELEASE_VERSION:12}}
       # - name: Login to DockerHub Registry
       #   run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
