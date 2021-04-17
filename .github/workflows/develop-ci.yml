@@ -79,10 +79,8 @@ jobs:
 
       - name: Get docker tag name
         run: |
-          echo "RELEASE_VERSION=${NBGV_BuildingRef#refs/*/}" >> $GITHUB_ENV  
-          echo "GITHUB_ENV ${{GITHUB_ENV}}"
-          echo "GITHUB_ENV ${{GITHUB_ENV:10}}"
-          echo "GITHUB_ENV ${{GITHUB_ENV:12}}"
+          echo "NBGV_BuildingRef ${{${NBGV_BuildingRef}}"
+          echo "NBGV_BuildingRef $NBGV_BuildingRef#refs/*/:10
           echo "NBGV_BuildingRef $NBGV_BuildingRef:11"
           echo "NBGV_BuildingRef ${{NBGV_BuildingRef:11}}"
 
