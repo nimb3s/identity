@@ -80,18 +80,20 @@ jobs:
       - name: print tagge
         run: |
           echo "$GITHUB_REF"
-          echo "$GITHUB_REF:10"
+          echo "${GITHUB_REF//\//-}"
+          echo "${GITHUB_REF//\//-#refs/*/}"
           echo "${GITHUB_REF#refs/heads/}"
           echo "${GITHUB_REF#refs/*/}"
+          echo "${GITHUB_REF#refs/*/}"
 
-      # - name: Login to DockerHub Registry
-      #   run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      # - name: Docker - API Building tagged image
-      #   run: docker build -f "src/Nimb3s.Identity.Api/Dockerfile" --tag nimb3s/identity.api:${{env.GITHUB_ENV}}-${{env.NBGV_SemVer2}} --force-rm --label "org.label-schema.build-date=${{env.NBGV_GitCommitDate}}" "org.label-schema.vcs-url=https://nimb3s.com" --label "org.label-schema.vcs-ref=${{env.NBGV_BuildingRef:11}}-${{env.NBG_SemVer2}}" --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Api" . --progress plain
+      - name: Docker - API Building tagged image
+        run: docker build -f "src/Nimb3s.Identity.Api/Dockerfile" --tag nimb3s/identity.api:${{env.GITHUB_ENV}}-${{env.NBGV_SemVer2}} --force-rm --label "org.label-schema.build-date=${{env.NBGV_GitCommitDate}}" "org.label-schema.vcs-url=https://nimb3s.com" --label "org.label-schema.vcs-ref=${{env.NBGV_BuildingRef:11}}-${{env.NBG_SemVer2}}" --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Api" . --progress plain
         
-      # - name: Docker - API Pushing tagged image to dockerhub
-      #   run: docker push nimb3s/identity.api:${{env.GITHUB_ENV}}-${{env.NBGV_SemVer2}}
+      - name: Docker - API Pushing tagged image to dockerhub
+        run: docker push nimb3s/identity.api:${{env.GITHUB_ENV}}-${{env.NBGV_SemVer2}}
 
   # database_docker_image:
     # needs: build
