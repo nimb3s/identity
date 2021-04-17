@@ -44,13 +44,13 @@ jobs:
     # - name: Get branch name
     #   run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
 
-    - name: Upload API Build Artifact
+    - name: Upload API Build Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: API.${{env.NBGV_SemVer2}}
         path: src/Nimb3s.Identity.Api/bin/Release/net5.0
 
-    - name: Upload DB Build Artifact
+    - name: Upload DB Build Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: DB.${{env.NBGV_SemVer2}}
@@ -66,7 +66,6 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
-        #os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - name: Checkout branch
@@ -96,38 +95,38 @@ jobs:
       - name: Docker - API Pushing tagged image to dockerhub
         run: docker push nimb3s/identity.api:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}
 
-  # database_docker_image:
-    # needs: build
-    # runs-on: ${{matrix.os}}
-    # strategy:
-    #   fail-fast: true
-    #   matrix:
-    #     os: [ubuntu-18.04]
+  database_docker_image:
+    needs: build
+    runs-on: ${{matrix.os}}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-18.04]
 
-    # steps:
-    #   - name: Checkout branch
-    #     uses: actions/checkout@v2
-    #     with:
-    #       fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
 
-    #   - name: Setup .NET
-    #     uses: actions/setup-dotnet@v1
-    #     with:
-    #       dotnet-version: 5.0.x
-      
-    #   - name: Setup SemVer
-    #     uses: dotnet/nbgv@v0.4.0
-    #     with:
-    #       setAllVars: true
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
 
-    #   - name: Get docker tag name
-    #     run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
-      
-    #   - name: Login to DockerHub Registry
-    #     run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-      
-    #   - name: Docker - Database Building tagged image
-    #     run: docker build -f "src/Nimb3s.Identity.Database/Dockerfile" --tag nimb3s/identity.database:${{env.NBG_SemVer2}} --force-rm --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Database" . --progress plain\
-      
-    #   - name: Docker - Database Pushing tagged image to dockerhub
-    #     run: docker push nimb3s/identity.database:${{env.NBG_SemVer2}}
+      - name: Setup SemVer
+        uses: dotnet/nbgv@v0.4.0
+        with:
+          setAllVars: true
+
+      - name: Setup Slugs
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Docker - API Building tagged image
+        run: docker build -f "src/Nimb3s.Database.Api/Dockerfile" --tag nimb3s/database.api:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}} --force-rm --label "org.label-schema.build-date=${{env.NBGV_GitCommitDate}}" --label "org.label-schema.vcs-url=https://nimb3s.com" --label "org.label-schema.vcs-ref=${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}" --label "com.microsoft.visual-studio.project-name=Nimb3s.Database.Api" . --progress plain
+        
+      - name: Docker - API Pushing tagged image to dockerhub
+        run: docker push nimb3s/database.api:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}
