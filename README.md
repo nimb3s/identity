@@ -48,3 +48,15 @@ git rm -rf --cached .
 git add .
 git commit -am "cleanup"
 ```
+
+## dotnet Tools
+Install nerdbank. Run this in a commandline:
+  - Click [here](https://github.com/dotnet/Nerdbank.GitVersioning/blob/master/doc/nbgv-cli.md) to learn more about the CLI. 
+  - You can also go here to [learn more about Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning).
+  - To learn more about SemVer you can [read this doc and watch the vid](https://apifriends.com/api-management/what-is-semantic-versioning/)
+
+Make sure you add dotnet tools to your environment path. To learn more about about `dotnet tool` [read the Microsoft docs](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install)
+
+```
+dotnet tool install -g nbgv
+```
