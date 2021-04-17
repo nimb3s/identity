@@ -20,11 +20,12 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
         fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+        dotnet-version: 5.0.x
     - name: Setup SemVer
       uses: dotnet/nbgv@v0.4.0
       with:
+        fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
         setAllVars: true
     - run: |
         echo "CloudBuildNumber $NBG_CloudBuildNumber
