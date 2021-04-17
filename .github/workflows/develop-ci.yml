@@ -2,19 +2,17 @@ name: develop
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop, feature/**, release/**, hotfix/**, support/** ]
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   build:
-
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
-        #os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
     - name: Checkout branch
@@ -58,14 +56,14 @@ jobs:
         path: src/Nimb3s.Identity.Database/bin/Release/netstandard2.0
 
   api_docker_image:
-    if: github.event.pull_request.base.ref != 'master'
+    if: github.event.pull_request.base.ref != 'develop'
     needs: build
+
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
-        #os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - name: Checkout branch
@@ -96,14 +94,13 @@ jobs:
         run: docker push nimb3s/identity.api:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}
 
   database_docker_image:
-    if: github.event.pull_request.base.ref != 'master'
+    if: github.event.pull_request.base.ref != 'develop'
     needs: build
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: true
       matrix:
         os: [ubuntu-18.04]
-        #os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - name: Checkout branch
@@ -127,8 +124,8 @@ jobs:
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Docker - DB Building Image
-        run: docker build -f "src/Nimb3s.Identity.Database/Dockerfile" --tag nimb3s/identity.database:latest --force-rm --label "org.label-schema.build-date=${{env.NBGV_GitCommitDate}}" --label "org.label-schema.vcs-url=https://nimb3s.com" --label "org.label-schema.vcs-ref=${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}" --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Database" . --progress plain
+      - name: Docker - DB Build Image
+        run: docker build -f "src/Nimb3s.Identity.Database/Dockerfile" --tag nimb3s/identity.database:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}} --force-rm --label "org.label-schema.build-date=${{env.NBGV_GitCommitDate}}" --label "org.label-schema.vcs-url=https://nimb3s.com" --label "org.label-schema.vcs-ref=${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}" --label "com.microsoft.visual-studio.project-name=Nimb3s.Identity.Database" . --progress plain
         
       - name: Docker - DB Upload Image to dockerhub
-        run: docker push nimb3s/identity.database:latest
+        run: docker push nimb3s/identity.database:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}
