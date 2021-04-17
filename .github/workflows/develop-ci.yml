@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: true
@@ -57,7 +56,7 @@ jobs:
         path: src/Nimb3s.Identity.Database/bin/Release/netstandard2.0
 
   api_docker_image:
-    
+    if: github.event.pull_request.base.ref != 'develop'
     needs: build
 
     runs-on: ${{matrix.os}}
@@ -95,6 +94,7 @@ jobs:
         run: docker push nimb3s/identity.api:${{env.GITHUB_REF_SLUG}}-${{env.NBGV_SimpleVersion}}
 
   database_docker_image:
+    if: github.event.pull_request.base.ref != 'develop'
     needs: build
     runs-on: ${{matrix.os}}
     strategy:
