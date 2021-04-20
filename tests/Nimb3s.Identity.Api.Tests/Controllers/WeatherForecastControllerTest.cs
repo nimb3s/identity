@@ -17,7 +17,7 @@ namespace Nimb3s.Identity.Api.Tests.Controllers
         [Test]
         public void IsTrue()
         {
-            Assert.IsTrue(true, "Asserting IsTrue");
+            Assert.IsTrue(false, "Asserting IsTrue");
         }
     }
 }
