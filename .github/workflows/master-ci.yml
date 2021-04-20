@@ -39,8 +39,10 @@ jobs:
       env:
         ASPNETCORE_ENVIRONMENT : Development
       run: dotnet build --no-restore --configuration Release
-#    - name: Test
-#      run: dotnet test --no-build --verbosity normal
+
+    #https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test
+    - name: Test
+      run: dotnet test --no-build --verbosity detailed
 
     # - name: Get branch name
     #   run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
