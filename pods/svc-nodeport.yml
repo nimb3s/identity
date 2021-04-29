@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ps-identity
+spec:
+  type: NodePort
+  ports:
+  - name: api
+    port: 80 #port service listens on inside the cluster
+    targetPort: 80 #port the app in container is listening on
+    nodePort: 30080 #between 3000 - 32767 port mapped to every cluster node
+    protocol: TCP
+  - name: database
+    port: 1433
+    targetPort: 1433
+    nodePort: 31433
+    protocol: TCP
+  selector:
+    app: identity
+#cluster ip assigned by k8s
+  #only used by the cluster
+  #name of the service 
+  #all pds can then resolve to that ip or name
+  #every service gets registered with dns and every container knows about it
+  #this is done throug labels
+
+  #http://localhost:30080/swagger/index.html
+  
