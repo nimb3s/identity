@@ -24,5 +24,10 @@ spec:
   #every service gets registered with dns and every container knows about it
   #this is done throug labels
 
-  #http://localhost:30080/swagger/index.html
-  
+#kubectl get svc
+#kubectl delete svc ps-nodeport
+#kubectl get pods
+#kubectl get pods --show-labels
+#kubectl apply -f svc-nodeport.yml
+
+#http://localhost:30080/swagger/index.html
