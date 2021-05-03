@@ -38,6 +38,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{E623FB7C-304
 		k8s\port-svc-identity.yml = k8s\port-svc-identity.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{9D7C975A-8793-48DA-B2AB-2F3BE09545EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{EF60A2A0-758D-44BB-8C79-5A39E2CCC5F2}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\develop-ci.yml = .github\workflows\develop-ci.yml
+		.github\workflows\master-ci.yml = .github\workflows\master-ci.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +100,7 @@ Global
 		{B03A2174-30E3-4B37-ACBB-23E65D15450A} = {A8428423-DAD4-4DE5-87B9-EFCC136F6C51}
 		{831068ED-B834-4164-A6F3-4BF29D25E3E2} = {B03A2174-30E3-4B37-ACBB-23E65D15450A}
 		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC} = {E248E58B-840C-4B26-97A5-307C7F9AA5B7}
+		{EF60A2A0-758D-44BB-8C79-5A39E2CCC5F2} = {9D7C975A-8793-48DA-B2AB-2F3BE09545EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46268209-EA22-407C-AE07-35CA7C25DF71}

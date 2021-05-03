@@ -7,14 +7,14 @@ metadata:
 spec:
   containers:
   - name: api-ctr
-    image: nimb3s/identity.api:develop-0.3.3
+    image: nimb3s/identity.api:develop-0.3.7
     env:
       - name: ASPNETCORE_ENVIRONMENT
         value: Development
     ports:
       - containerPort: 80
   - name: db-ctr
-    image: nimb3s/identity.database:develop-0.3.3
+    image: nimb3s/identity.database:develop-0.3.7
     env:
       - name: ASPNETCORE_ENVIRONMENT
         value: Development
