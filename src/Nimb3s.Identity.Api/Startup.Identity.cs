@@ -1,16 +1,14 @@
+using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Mappers;
+using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.Security.Claims;
 
 namespace Nimb3s.Identity.Api
 {
@@ -26,22 +24,98 @@ namespace Nimb3s.Identity.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureIdentityServices(IServiceCollection services)
         {
+            const string connectionString = @"Data Source=.,1433;Initial Catalog=Identity;User ID=sa;Password=1234qwerASDF;";
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
             var builder = services.AddIdentityServer(options =>
             {
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
             })
-                .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(Config.Clients);
+            .AddDeveloperSigningCredential()
+            .AddTestUsers(new List<TestUser>
+            {
+                new TestUser
+                {
+                   SubjectId = "1",
+                   Username = "user1",
+                   Password = "password1",
+                   IsActive = true,
+                   Claims = new List<Claim>
+                   {
+                       new Claim("email", "someuser@gmail.com")
+                   }
+                }
+            })
+            .AddConfigurationStore(options =>
+            {
+                options.ConfigureDbContext = builder =>
+                    builder.UseSqlServer(connectionString,
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
+            })
+            // this adds the operational data from DB (codes, tokens, consents)
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = builder =>
+                    builder.UseSqlServer(connectionString,
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
 
-            builder.AddDeveloperSigningCredential();
+                // this enables automatic token cleanup. this is optional.
+                options.EnableTokenCleanup = true;
+                options.TokenCleanupInterval = 30;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void ConfigureIdentity(IApplicationBuilder app)
         {
+            InitializeDatabase(app);
             app.UseIdentityServer();
+        }
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                if (!context.Clients.Any())
+                {
+                    foreach (var client in Config.Clients)
+                    {
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
+                {
+                    foreach (var resource in Config.IdentityResources)
+                    {
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiResources.Any())
+                {
+                    foreach (var resource in Config.ApiResources)
+                    {
+                        context.ApiResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiScopes.Any())
+                {
+                    foreach (var scope in Config.ApiScopes)
+                    {
+                        context.ApiScopes.Add(scope.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }
