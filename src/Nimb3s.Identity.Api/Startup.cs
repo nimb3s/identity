@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json.Converters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Nimb3s.Identity.Api
 {
@@ -20,13 +23,22 @@ namespace Nimb3s.Identity.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddHttpContextAccessor();
+            services.AddControllersWithViews().AddNewtonsoftJson(i =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nimb3s.Identity.Api", Version = "v1" });
+                i.SerializerSettings.Converters.Add(new StringEnumConverter());
+
+                i.SerializerSettings.TypeNameHandling = TypeNameHandling.All;
+                i.SerializerSettings.Formatting = Formatting.Indented;
+                i.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                i.SerializerSettings.ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() };
             });
 
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            ConfigureSwaggerServices(services);
             ConfigureIdentityServices(services);
         }
 
