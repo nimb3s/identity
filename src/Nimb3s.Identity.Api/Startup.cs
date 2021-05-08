@@ -1,16 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Converters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Nimb3s.Identity.Api
 {
@@ -27,14 +23,23 @@ namespace Nimb3s.Identity.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddHttpContextAccessor();
+            services.AddControllersWithViews().AddNewtonsoftJson(i =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nimb3s.Identity.Api", Version = "v1" });
+                i.SerializerSettings.Converters.Add(new StringEnumConverter());
+
+                i.SerializerSettings.TypeNameHandling = TypeNameHandling.All;
+                i.SerializerSettings.Formatting = Formatting.Indented;
+                i.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                i.SerializerSettings.ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() };
             });
 
-            //ConfigureIdentityServices(services);
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            ConfigureSwaggerServices(services);
+            ConfigureIdentityServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +63,7 @@ namespace Nimb3s.Identity.Api
                 endpoints.MapControllers();
             });
 
-            //ConfigureIdentity(app);
+            ConfigureIdentity(app);
         }
     }
 }
