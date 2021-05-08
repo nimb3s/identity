@@ -24,7 +24,6 @@ namespace Nimb3s.Identity.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureIdentityServices(IServiceCollection services)
         {
-            const string connectionString = @"Data Source=.,1433;Initial Catalog=Identity;User ID=sa;Password=1234qwerASDF;";
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             var builder = services.AddIdentityServer(options =>
@@ -50,14 +49,13 @@ namespace Nimb3s.Identity.Api
             .AddConfigurationStore(options =>
             {
                 options.ConfigureDbContext = builder =>
-                    builder.UseSqlServer(connectionString,
-                        sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.UseSqlServer(Configuration["AppSettings:ConnectionString"], sql => sql.MigrationsAssembly(migrationsAssembly));
             })
             // this adds the operational data from DB (codes, tokens, consents)
             .AddOperationalStore(options =>
             {
                 options.ConfigureDbContext = builder =>
-                    builder.UseSqlServer(connectionString,
+                    builder.UseSqlServer(Configuration["AppSettings:ConnectionString"],
                         sql => sql.MigrationsAssembly(migrationsAssembly));
 
                 // this enables automatic token cleanup. this is optional.
