@@ -87,7 +87,6 @@ Global
 		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC}.ReleaseDatabase|Any CPU.ActiveCfg = Release|Any CPU
-		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC}.ReleaseDatabase|Any CPU.Build.0 = Release|Any CPU
 		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC}.ReleaseNoDb|Any CPU.ActiveCfg = Release|Any CPU
 		{50D3B058-A5C6-4261-9C9E-BFCE7C866CBC}.ReleaseNoDb|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
